@@ -38,7 +38,7 @@ export const getMovie: RequestHandler[] = [
 		try {
 			const movie: Movie[] = await getBy('id', req.params.id);
 			let filepath = path.join(__dirname, '../../../movies');
-			filepath += `\\${movie[0].name}.mp4`;
+			filepath += `/${movie[0].name}.mp4`;
 			const sale: Sales = {
 				name: movie[0].name,
 				date: getnowDate(),
