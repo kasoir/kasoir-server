@@ -4,7 +4,7 @@
 	"scripts": {
 		"lint": "tslint -c tslint.json -p tsconfig.json",
 		"watchbuild": "nodemon --watch src -e ts --exec npm run build",
-		"build": "npm run watch",
+		"build": "npm run build",
 		"runbuilt": "node dist/server/src/index.js",
 		"noprestart": "npm run build",
 		"start": "npm run watch",
