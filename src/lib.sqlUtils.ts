@@ -73,7 +73,7 @@ export const generateBulkInsertQuery = <T>(tableName: string, defaultObject: T, 
 	}
 	);
 	text += inserts.map(insert => insert.params).join(',');
-	const values = inserts.map(insert => insert.values).flat(1);
+	const values = inserts.map(insert => insert.values);
 	if (returnRow)
 		text += 'RETURNING * ';
 
@@ -111,7 +111,7 @@ export const generateBulkUpsertQuery = <T>(tableName: string, defaultObject: T, 
 	}
 	);
 	text += upserts.map(insert => insert.params).join(',');
-	const values = upserts.map(insert => insert.values).flat(1);
+	const values = upserts.map(insert => insert.values);
 	text += ` ON CONFLICT(${conflictField}) DO UPDATE SET  ${Object.keys(defaultWithNoId).filter(key => key !== conflictField).map(field => `"${field}" = EXCLUDED."${field}"`).join(',')}`
 	if (returnRow)
 		text += 'RETURNING * ';
