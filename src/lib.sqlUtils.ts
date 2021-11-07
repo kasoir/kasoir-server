@@ -77,6 +77,7 @@ export const generateBulkInsertQuery = <T>(tableName: string, defaultObject: T, 
 	if (returnRow)
 		text += 'RETURNING * ';
 
+
 	return { text, values, paramCounter };
 
 }
