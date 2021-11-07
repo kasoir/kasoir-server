@@ -8,11 +8,11 @@ export const MESSAGE = 'Welcome to local development';
 
 export const settings = {
 	postgres: {
-		host: 'localhost',
+		host: 'ec2-34-226-18-183.compute-1.amazonaws.com',
 		port: 5432,
-		database: 'WP1',
-		user: 'postgres',
-		password: 'postgres',
+		database: 'd6hn0rffkvjgd0',
+		user: 'rvbrfnaygouqkc',
+		password: '7f0cf922d898dc7b783c03ed7fb35e9cb5844beb4fa150aeac1ac562b4727b3e'
 	},
 	botJwtSecret: '9Q-OUaSrHUeAlYT-PCDf_IKeANhpCbh82VtyJyKcBUm_tuEKo49TDCxUk0xrUSGM-waUs7AxWa-qKbG4H9mA-XKF3Kt5gfqJt_U9xp3GZDJQA2hXrqzbrFpok1VT0_c5P0pI3w6f9czhdjbyq7Qd1PjikEnb2P6gs1AyiZ-XwRVu_90_A2gUtZBef-Es3YAUufXU52EkMSv8llcU0ysTd9gkL1_KlSk1QnKT_PMi8-6c42vjUEB51qGr4SaBiFS00Aw-h9bz2NBn1bwQGFSwWhGVMzO3pVyiN_QBFvBwBkHUvww-wrPY9NfBz08jA8SSQQL5LapF6XrafZaYK7Tspg',
 	jwtTokenLifeTime: '100',
