@@ -3,7 +3,7 @@ import { body, param } from 'express-validator';
 import { apiValidator } from '../../utils/apiValidator';
 import * as pg from '../../lib.pool';
 import { apiResponder } from '../../utils/apiResponder';
-import { getDefaultUser, User } from '../../../../models/user.model';
+import { getDefaultUser, User } from '../../../models/user.model';
 import { generateInsertQuery } from '../../lib.sqlUtils';
 import * as bcrypt from 'bcrypt';
 
@@ -55,7 +55,7 @@ const getBy = async (key?: string, value?: string): Promise<User[]> => {
 }
 
 const createUser = async (user: User) => {
-    const password = await bcrypt.hash( user.password ? user.password : user.email, 10 );
+    const password = await bcrypt.hash(user.password ? user.password : user.email, 10);
     user.password = password;
     const query = generateInsertQuery(`public."user"`, getDefaultUser(), user, true, true);
     const result = (await pg.db.query<User>(query.text, query.values)).rows[0];

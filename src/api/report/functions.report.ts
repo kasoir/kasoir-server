@@ -1,8 +1,8 @@
 import { RequestHandler, Request, Response } from "express";
 import { body } from "express-validator";
 import { StatusCodes } from "http-status-codes";
-import { ApiResponse } from "../../../../models/ApiResponse";
-import { pageHeader, row } from "../../../../settings/pdf-format";
+import { ApiResponse } from "../../../models/ApiResponse";
+import { pageHeader, row } from "../../../settings/pdf-format";
 import { cors } from "../../lib.cors";
 import * as pg from '../../lib.pool';
 

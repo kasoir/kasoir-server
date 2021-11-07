@@ -1,6 +1,6 @@
 import { NextFunction, Response, Request, RequestHandler } from 'express';
 import { param, body } from "express-validator";
-import { Actor, getDefaultActor } from "../../../../models/actor.model";
+import { Actor, getDefaultActor } from "../../../models/actor.model";
 import { generateDeleteQuery, generateInsertQuery, generateUpdateQuery } from "../../lib.sqlUtils";
 import { apiResponder } from "../../utils/apiResponder";
 import { apiValidator } from "../../utils/apiValidator";
@@ -41,7 +41,7 @@ export const postActor: RequestHandler[] = [
 	apiResponder(async (req: Request, res: Response, next: NextFunction) => {
 		const payload: Actor = req.body;
 		console.log(req.body);
-        console.log(getDefaultActor());
+		console.log(getDefaultActor());
 		const result = await createActor(payload);
 
 		return result || {};

@@ -1,17 +1,17 @@
 import { NextFunction, Response, Request, RequestHandler } from 'express';
 import { body, param } from 'express-validator';
 import { apiValidator } from '../../utils/apiValidator';
-import { getDefaultMovie, Movie } from '../../../../models/movie.model';
+import { getDefaultMovie, Movie } from '../../../models/movie.model';
 import * as pg from '../../lib.pool';
 import { apiResponder } from '../../utils/apiResponder';
 import { generateDeleteQuery, generateInsertQuery, generateUpdateQuery } from '../../lib.sqlUtils';
 import { getnow, getnowDate } from '../../utils/getnow';
 import path = require('path');
-import { getDefaultSales, Sales } from '../../../../models/sales.model';
+import { getDefaultSales, Sales } from '../../../models/sales.model';
 import { UploadedFile } from 'express-fileupload';
 import * as fs from 'fs';
 import { StatusCodes } from 'http-status-codes';
-import { ApiResponse } from '../../../../models/ApiResponse';
+import { ApiResponse } from '../../../models/ApiResponse';
 
 export const getByMovies: RequestHandler[] = [
 	param('key').optional().isString(),
@@ -83,23 +83,23 @@ export const postMovie: RequestHandler[] = [
 	}),
 ];
 export const PostMovieUpload: RequestHandler[] = [
-		async (req: Request, res: Response, next: NextFunction) => {
-			console.log(req.files);
-			if ( !req.files ) {
-				res.status( StatusCodes.BAD_REQUEST ).json( { code: StatusCodes.BAD_REQUEST, data: {}, message: '', error: 'no file uploaded' } as ApiResponse<{}> );
-			}
-			const uploadedFiles: string[] = [];
-			for (const fieldName in req.files) {
-				const movie = req.files[fieldName] as UploadedFile;
-				if (!fs.existsSync(`../../../ movies /`)) fs.mkdirSync('../../../movies/');
-				const docPath = `../../../movies/${movie.name}`;
-				console.log(docPath);
-				await movie.mv(docPath);
-				uploadedFiles.push(fieldName);
-			}
-
-			return uploadedFiles;
+	async (req: Request, res: Response, next: NextFunction) => {
+		console.log(req.files);
+		if (!req.files) {
+			res.status(StatusCodes.BAD_REQUEST).json({ code: StatusCodes.BAD_REQUEST, data: {}, message: '', error: 'no file uploaded' } as ApiResponse<{}>);
 		}
+		const uploadedFiles: string[] = [];
+		for (const fieldName in req.files) {
+			const movie = req.files[fieldName] as UploadedFile;
+			if (!fs.existsSync(`../../../ movies /`)) fs.mkdirSync('../../../movies/');
+			const docPath = `../../../movies/${movie.name}`;
+			console.log(docPath);
+			await movie.mv(docPath);
+			uploadedFiles.push(fieldName);
+		}
+
+		return uploadedFiles;
+	}
 ]
 const getBy = async (key?: string, value?: string): Promise<Movie[]> => {
 	let movies: Movie[];

@@ -1,6 +1,6 @@
 import { Request, Response, RequestHandler, NextFunction } from "express";
 import { body, param } from "express-validator";
-import { Director, getDefaultDirector } from "../../../../models/director.model";
+import { Director, getDefaultDirector } from "../../../models/director.model";
 import { apiResponder } from "../../utils/apiResponder";
 import { apiValidator } from "../../utils/apiValidator";
 import * as pg from '../../lib.pool';
