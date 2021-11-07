@@ -12,7 +12,7 @@
 		"dev": "nodemon --watch src -e ts --exec npm run dev:start",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"justrun": "ts-node src/index.ts",
-		"watch": "nodemon --watch src -e ts --exec npm run justrun",
+		"watch": "ts-node src/index.ts",
 		"deploy": "pm2 start src/index.ts --watch"
 	},
 	"main": "dist/server/src/index.js",

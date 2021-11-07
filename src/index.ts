@@ -44,6 +44,6 @@ app.use((error: HttpError, _req: Request, res: Response, _next: NextFunction) =>
 });
 
 // start the Express server
-app.listen(apiPort, () => {
-	console.log(`server started at http://localhost:${apiPort}`);
+app.listen(process.env.PORT || apiPort, () => {
+	console.log(`server started at http://localhost:`, apiPort, app.settings.env);
 });
