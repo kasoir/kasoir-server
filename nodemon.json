@@ -1,0 +1,12 @@
+{
+	"restratable": "rs",
+	"ext": "ts",
+	"watch": [
+		"src"
+	],
+	"ignore": [
+		".git",
+		"node_modules/**"
+	],
+	"exec": "npm run serve"
+}
